@@ -452,7 +452,7 @@ footer{text-align:center;padding:22px 48px;border-top:1px solid rgba(124,58,237,
       <h2 class="contact-title reveal d1">Let's build something<br><em>together.</em></h2>
       <p class="contact-sub reveal d2">I'm actively recruiting for APM / PM roles. Reach out - I respond fast.</p>
       <div class="contact-links reveal d3">
-        <a href="mailto:sidhyaganesh@wharton.upenn.edu" class="contact-link">✉️ Email</a>
+        <a href="mailto:sidhya6@gmail.com" class="contact-link">✉️ Email</a>
         <a href="https://linkedin.com/in/sidhyaganesh" target="_blank" class="contact-link">💼 LinkedIn</a>
         <a href="https://github.com/sidhya-ganesh" target="_blank" class="contact-link">⌨️ GitHub</a>
       </div>
@@ -816,112 +816,115 @@ footer{text-align:center;padding:22px 48px;border-top:1px solid rgba(124,58,237,
     <button class="back-btn" onclick="navTo('page-main')">← Back to Portfolio</button>
     <div class="inner-eyebrow">Enterprise · Data Infrastructure · PM Internship · Summer 2026</div>
     <h1 class="inner-title">Pattern - <em>Amazon Reimbursement</em><br>Recovery Engine</h1>
-    <p class="inner-sub">Identified and quantified $4.2M+ in annual reimbursement losses at Pattern by mapping outbound documentation failures across a 1.6M-shipment Snowflake dataset, and drove the engineering roadmap to recover it.</p>
+    <p class="inner-sub">Mapped $6.9M in annual reimbursement exposure across a 1.6M-shipment Snowflake dataset, identified four distinct root causes in the documentation pipeline, and drove three engineering fixes from zero to shipped - including writing and deploying a regex validation ticket to production.</p>
     <div class="inner-metrics">
       <span class="i-metric">$6.9M annual exposure mapped</span>
-      <span class="i-metric">$13–20M full-scale ceiling</span>
+      <span class="i-metric">$13-20M full-scale ceiling</span>
       <span class="i-metric">808K FBA shipments traced</span>
-      <span class="i-metric">4 root causes discovered</span>
+      <span class="i-metric">4 root causes isolated</span>
+      <span class="i-metric">3 tickets written · 1 shipped to production</span>
       <span class="i-metric">8 stakeholders · 5 teams</span>
-      <span class="i-metric">2 engineering tickets shipped</span>
     </div>
   </div>
   <div class="inner-divider"></div>
   <div class="accordion" id="acc-pattern">
     <div class="acc-item">
       <button class="acc-header open" onclick="toggleAcc(this)">
-        <span class="acc-label">Problem</span>
+        <span class="acc-label">The System I Was Working In</span>
         <span class="acc-chevron">▼</span>
       </button>
       <div class="acc-body open">
-    <div class="prose-section">
-      <div class="prose-section-label">The Problem</div>
-      <p>When Amazon loses inventory Pattern ships, Pattern can file a reimbursement claim - but only with the right documentation proving the shipment left the warehouse and arrived at Amazon. Without it, Amazon denies outright.</p>
-      <p>Pattern's CS team was fielding <strong>1,009 documentation requests a year</strong>, the reimbursement team could only file <strong>40% of eligible cases</strong>, and nobody had a clear picture of why. I found four separate root causes nobody had mapped before.</p>
-    </div>
-  </div>
-    </div>
-    <div class="acc-item">
-      <button class="acc-header" onclick="toggleAcc(this)">
-        <span class="acc-label">User Research</span>
-        <span class="acc-chevron">▼</span>
-      </button>
-      <div class="acc-body">
-    <div class="prose-section">
-      <div class="prose-section-label">Stakeholder Research - 8 interviews across 5 teams</div>
-      <p>Through interviews I found that the entire documentation chain - from BOL capture to reference number submission - was running on <strong>manual processes, spreadsheets, and tribal knowledge</strong> with no ownership and no fallback.</p>
-      <p>I mapped every failure point and built the case for replacing it with automated infrastructure.</p>
-    </div>
-  </div>
-    </div>
-    <div class="acc-item">
-      <button class="acc-header" onclick="toggleAcc(this)">
-        <span class="acc-label">Metrics</span>
-        <span class="acc-chevron">▼</span>
-      </button>
-      <div class="acc-body">
-    <div class="prose-section">
-      <div class="prose-section-label">North Star - % of departed FBA shipments with a valid Amazon Reference Number</div>
-      <p>Baseline: 11% of non-cancelled shipments missing an ARN. Target: near 0%.</p>
-      <div class="callout"><p><strong>My instinct was to make reimbursements filed the north star. I reoriented away from it</strong> because it only reflects Pattern's ~15 active reimbursement sellers and stays flat even when documentation improves. ARN completeness covers all sellers, can't be gamed, and tracks exactly what engineering controls.</p></div>
-      <div class="prose-section-label" style="margin-top:24px;">What I Don't Optimise For</div>
-      <ul>
-        <li>Total reimbursements filed (vanity - one new seller joining inflates it without documentation improvement)</li>
-        <li>Total dollars recovered (too dependent on Amazon's approval rate to signal whether the system is fixed)</li>
-      </ul>
-    </div>
-  </div>
-    </div>
-    <div class="acc-item">
-      <button class="acc-header" onclick="toggleAcc(this)">
-        <span class="acc-label">Investigation</span>
-        <span class="acc-chevron">▼</span>
-      </button>
-      <div class="acc-body">
-    <div class="prose-section">
-      <div class="prose-section-label">Investigation Approach</div>
-      <p>I traced the documentation chain across <strong>808,000 FBA shipments in Snowflake</strong> and found only 54.4% ever reached an outbound shipment record.</p>
-      <p>I corrected the ARN null rate from 34% to 11% by removing cancelled shipments - a 4x inflation that would have sent the team solving the wrong problem.</p>
-      <div class="callout"><p>I then split the remaining null-ARN population into two buckets: <strong>84.8% had never been attached to a truck at all</strong>, and <strong>15.2% were on a truck but missing an ARN due to timing lag</strong> - two different root causes requiring two different fixes.</p></div>
-    </div>
-  </div>
-    </div>
-    <div class="acc-item">
-      <button class="acc-header" onclick="toggleAcc(this)">
-        <span class="acc-label">Solutions</span>
-        <span class="acc-chevron">▼</span>
-      </button>
-      <div class="acc-body">
-    <div class="prose-section">
-      <div class="prose-section-label">Solutions Built</div>
-      <ul>
-        <li><strong>Amazon Freight API migration:</strong> The full Amazon Freight API had been integrated but the reference number submission endpoint had never been used. I wrote the ClickUp ticket to replace the manual spreadsheet process with that endpoint entirely - no character limit, no manual window, no silent failures. Addresses the 84.8% never-attached bucket.</li>
-        <li><strong>ARN re-poll background job:</strong> I established that ShipmentCzar had no retry on failed ARN fetches, ran a proof of concept, measured the 78-hour median creation-to-departure window to size job frequency, and wrote the ClickUp ticket for a Sidekiq job running every 3–4 hours. Addresses the 15.2% timing lag bucket.</li>
-        <li><strong>Carrier ref validation (DIST-26412):</strong> Wrote and shipped per-carrier regex validation covering 8 carriers that had been scoped but never built. Zero infrastructure change, immediate fix for bad carrier ref data blocking automated ARN retrieval downstream.</li>
-      </ul>
-    </div>
-  </div>
-    </div>
-    <div class="acc-item">
-      <button class="acc-header" onclick="toggleAcc(this)">
-        <span class="acc-label">Hardest Tradeoff</span>
-        <span class="acc-chevron">▼</span>
-      </button>
-      <div class="acc-body">
-    <div class="prose-section">
-      <div class="prose-section-label">Hardest Tradeoff</div>
-      <div class="tradeoff-grid">
-        <div class="tradeoff-card tradeoff-chose">
-          <div class="tradeoff-label chose">✓ Chose - Build both fixes in parallel</div>
-          <p>When my re-poll proof of concept worked, it would have been easy to call that the fix. I didn't, because my bucket analysis showed 84.8% of null-ARN shipments had never been attached to a truck - re-polling couldn't touch them. I pushed to build both fixes in parallel rather than sequence them in a way that would have looked like progress while leaving most of the problem intact.</p>
-        </div>
-        <div class="tradeoff-card tradeoff-rej">
-          <div class="tradeoff-label rej">✕ Rejected - Ship re-poll as the fix</div>
-          <p>Re-poll was working, was easy to ship, and would have shown measurable improvement - while leaving 84.8% of the problem untouched. Sequencing the fixes would have created a false sense of progress.</p>
+        <div class="prose-section">
+          <p>When Amazon loses inventory Pattern ships, Pattern can file a reimbursement claim - but only with an Amazon Reference Number (ARN) proving the shipment left the warehouse. Without it, Amazon denies outright.</p>
+          <p>The ARN flows through a chain of systems: warehouse departure - carrier pickup - ShipmentCzar (Pattern's internal logistics layer) - Amazon Freight API - reimbursement filing. <strong>I owned end-to-end investigation of where that chain was breaking and why.</strong></p>
+          <div class="callout"><p>Pattern's CS team was fielding <strong>1,009 documentation requests a year</strong>. The reimbursement team could only file <strong>40% of eligible cases</strong>. Nobody had a clear picture of why. I found four separate root causes nobody had mapped before.</p></div>
         </div>
       </div>
     </div>
-  </div>
+    <div class="acc-item">
+      <button class="acc-header" onclick="toggleAcc(this)">
+        <span class="acc-label">How I Diagnosed It</span>
+        <span class="acc-chevron">▼</span>
+      </button>
+      <div class="acc-body">
+        <div class="prose-section">
+          <p>I traced <strong>808,000 FBA shipments in Snowflake</strong> and found only 54.4% ever reached an outbound shipment record. Before surfacing that number to stakeholders, I corrected the ARN null rate from 34% to 11% by stripping cancelled shipments - a 4x inflation that would have sent the team solving the wrong problem entirely.</p>
+          <p>I then split the remaining null-ARN population into two mechanically distinct buckets:</p>
+          <ul>
+            <li><strong>84.8%</strong> - shipments never attached to a truck at all. Root cause: the Amazon Freight API had a reference number submission endpoint that had been integrated but never called. The team was running a manual spreadsheet process in parallel, with a character limit, a manual submission window, and silent failures when it missed.</li>
+            <li><strong>15.2%</strong> - shipments on a truck but missing an ARN due to timing lag. Root cause: ShipmentCzar had no retry logic on failed ARN fetches. I measured the 78-hour median creation-to-departure window and confirmed via proof of concept that re-polling resolves the gap.</li>
+          </ul>
+          <div class="callout"><p><strong>Treating these as one problem would have meant shipping the re-poll fix, celebrating, and leaving 84.8% of the exposure completely untouched.</strong> I pushed for both fixes in parallel.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-header" onclick="toggleAcc(this)">
+        <span class="acc-label">What I Built and Shipped</span>
+        <span class="acc-chevron">▼</span>
+      </button>
+      <div class="acc-body">
+        <div class="prose-section">
+          <ul>
+            <li><strong>Amazon Freight API migration</strong> - wrote the ClickUp ticket to replace the manual spreadsheet process with the unused submission endpoint entirely. No character limit, no manual window, no silent failures. Addresses the 84.8% bucket.</li>
+            <li><strong>ARN re-poll background job</strong> - scoped and wrote the ticket for a Sidekiq job running every 3-4 hours, sized against the 78-hour median window I measured. Addresses the 15.2% timing-lag bucket.</li>
+            <li><strong>Carrier ref validation (DIST-26412) - shipped</strong> - wrote and deployed per-carrier regex validation logic covering 8 carriers. This had been scoped but never built. Zero infrastructure change required, immediate fix for the bad carrier reference data blocking automated ARN retrieval downstream. This one I took from ticket to production myself.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-header" onclick="toggleAcc(this)">
+        <span class="acc-label">North Star Metric</span>
+        <span class="acc-chevron">▼</span>
+      </button>
+      <div class="acc-body">
+        <div class="prose-section">
+          <p><strong>North star: % of departed FBA shipments with a valid ARN.</strong> Baseline: 11% missing. Target: near 0%.</p>
+          <div class="callout"><p>I reoriented away from "reimbursements filed" because it only reflects Pattern's ~15 active reimbursement sellers and stays flat even when the underlying documentation infrastructure improves. ARN completeness covers all sellers, can't be gamed, and tracks exactly what engineering controls - not Amazon's approval rate.</p></div>
+          <div class="prose-section-label" style="margin-top:20px;">What I Don't Optimise For</div>
+          <ul>
+            <li>Total reimbursements filed - inflated by new seller onboarding, not documentation quality</li>
+            <li>Total dollars recovered - too dependent on Amazon's black-box approval decisions to signal whether the system is actually fixed</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-header" onclick="toggleAcc(this)">
+        <span class="acc-label">Hardest Call</span>
+        <span class="acc-chevron">▼</span>
+      </button>
+      <div class="acc-body">
+        <div class="prose-section">
+          <div class="tradeoff-grid">
+            <div class="tradeoff-card tradeoff-chose">
+              <div class="tradeoff-label chose">✓ Chose - Both fixes in parallel</div>
+              <p>When the re-poll proof of concept worked, it would have been easy to call that the fix and move on. I didn't, because the bucket analysis showed 84.8% of null-ARN shipments had never been on a truck at all - re-polling can't touch them. I pushed to scope and write both engineering tickets in parallel.</p>
+            </div>
+            <div class="tradeoff-card tradeoff-rej">
+              <div class="tradeoff-label rej">✕ Rejected - Ship re-poll as the fix</div>
+              <p>Re-poll was working, was easy to ship, and would have shown measurable improvement - while leaving 84.8% of the problem untouched. Sequencing the fixes would have created a false sense of progress and left most of the $6.9M exposure intact.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="acc-item">
+      <button class="acc-header" onclick="toggleAcc(this)">
+        <span class="acc-label">Results</span>
+        <span class="acc-chevron">▼</span>
+      </button>
+      <div class="acc-body">
+        <div class="results-grid">
+          <div class="result-card"><div class="result-num">$6.9M</div><div class="result-label">Annual exposure mapped to fixable causes</div></div>
+          <div class="result-card"><div class="result-num">$13-20M</div><div class="result-label">Full-scale ceiling across all Pattern sellers</div></div>
+          <div class="result-card"><div class="result-num">808K</div><div class="result-label">FBA shipments traced in Snowflake</div></div>
+          <div class="result-card"><div class="result-num">4x</div><div class="result-label">Measurement error caught before misdirecting the team</div></div>
+          <div class="result-card"><div class="result-num">3</div><div class="result-label">Engineering tickets written - 2 in-flight, 1 shipped to production</div></div>
+          <div class="result-card"><div class="result-num">8</div><div class="result-label">Stakeholders interviewed across 5 teams</div></div>
+        </div>
+      </div>
     </div>
     <div class="acc-item">
       <button class="acc-header" onclick="toggleAcc(this)">
@@ -929,11 +932,10 @@ footer{text-align:center;padding:22px 48px;border-top:1px solid rgba(124,58,237,
         <span class="acc-chevron">▼</span>
       </button>
       <div class="acc-body">
-    <div class="prose-section">
-      <div class="prose-section-label">What I'd Change</div>
-      <p>I spent two weeks on data analysis before discovering that several engineers had already run versions of the same queries. <strong>My first move should have been finding who had already touched this data.</strong> Systems like this always have a previous analyst, a prior spike ticket, or a tool that was built and never surfaced.</p>
-    </div>
-  </div>
+        <div class="prose-section">
+          <p>I spent two weeks on data analysis before discovering that several engineers had already run versions of the same queries. <strong>My first move should have been a 30-minute standup with the data and engineering teams to map what had already been tried.</strong> Systems like this always have a prior spike ticket or a previous analyst - find them first.</p>
+        </div>
+      </div>
     </div>
   </div>
 </div>
